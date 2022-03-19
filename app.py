@@ -2,13 +2,13 @@ from flask import Flask, render_template
 
 from controllers.users_controller import users_blueprint
 from controllers.manufacturers_controller import manufacturers_blueprint
-from controllers.products_controller import products_blueprint
+# from controllers.products_controller import products_blueprint
 
 app = Flask(__name__)
 
 app.register_blueprint(users_blueprint)
 app.register_blueprint(manufacturers_blueprint)
-app.register_blueprint(products_blueprint)
+# app.register_blueprint(products_blueprint)
 
 @app.route('/')
 def home():

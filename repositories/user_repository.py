@@ -20,19 +20,19 @@ def select_all():
     sql = "SELECT * FROM users"
     results = run_sql(sql)
     for row in results:
-        user = User(row['name'], row['id'])
+        user = User(row['name'], row['category'], row['id'])
         users.append(user)
     return users
 
-# def select(id):
-#     user = None
-#     sql = "SELECT * FROM users WHERE id = %s"
-#     values = [id]
-#     result = run_sql(sql, values)[0]
+def select(id):
+    user = None
+    sql = "SELECT * FROM users WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
 
-#     if result is not None:
-#         user = User(result['name'], result['category'], result['id'] )
-#     return user
+    if result is not None:
+        user = User(result['name'], result['category'], result['id'] )
+    return user
 
 #delete all users
 def delete_all():

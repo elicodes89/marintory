@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>List of Manufacturers:</h1>
+
+<table>
+  <tr>
+    <th>ID:</th>
+    <th></th>
+    <th>Name:</th>
+    <th></th>
+    <th>Email:</th>
+    <th></th>
+    <th>Contact Number:</th>
+    <th></th>
+    <th>Category</th>
+  </tr>
+  {% for manufacturer in manufacturers %}
+  <tr>
+    <td><a href="/manufacturers/{{ manufacturer.id }}"> {{manufacturer.id}} </a></td>
+    <td>|</td>
+    <td>{{ manufacturer.name}}</td>
+    <td>|</td>
+    <td>{{ manufacturer.email }}</td>
+    <td>|</td>
+    <td>{{ manufacturer.contact_number }}</td>
+    <td>|</td>
+    <td>{{ manufacturer.category }}</td>
+    <td>|</td>
+
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

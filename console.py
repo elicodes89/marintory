@@ -1,10 +1,10 @@
 import pdb
 from models.user import User
 from models.manufacturer import Manufacturer
-from models.product import Product
+# from models.product import Product
 
 import repositories.user_repository as user_repository
-import repositories.product_repository as product_repository
+# import repositories.product_repository as product_repository
 import repositories.manufacturer_repository as manufacturer_repository
 
 user_repository.delete_all()

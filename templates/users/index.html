@@ -5,13 +5,18 @@
 
 <table>
     <tr>
-        <th>Name</th>
+      <th>ID:</th>
+      <th></th>
+        <th>Name:</th>
         <th></th>
-        <th>Category</th>
+        <th>Category:</th>
       </tr>
   {% for user in users %}
+
   <tr>
-    <td><a href="/users/{{ user.id }}"> {{user.name}}</a></td>
+    <td><a href="/users/{{ user.id }}"> {{user.id}}</a></td>
+    <td>|</td>
+    <td>{{ user.name }}</td>
     <td>|</td>
     <td>{{ user.category }}</td>
   </tr>
