@@ -1,20 +1,14 @@
 import pdb
-from models.manufacturer import Manufacturer
 from models.user import User
-from models.product import Product
 
-import repositories.manufacturer_repository as manufacturer_repository
 import repositories.user_repository as user_repository
-import repositories.product_repository as product_repository
 
+user_repository.delete_all()
 
-
-
-
-
-
-
-
+user_1 = User('Daniel', 'Shop Assistant2')
+user_repository.save(user_1)
+user_2 = User('David' , 'Assistant')
+user_repository.save(user_2)
 
 
 pdb.set_trace()
