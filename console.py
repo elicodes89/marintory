@@ -5,9 +5,9 @@ import repositories.user_repository as user_repository
 
 user_repository.delete_all()
 
-user_1 = User('Daniel', 'Shop Assistant2')
+user_1 = User('Elisol', 'Shop Manager')
 user_repository.save(user_1)
-user_2 = User('David' , 'Assistant')
+user_2 = User('Marcos' , 'Assistant')
 user_repository.save(user_2)
 
 

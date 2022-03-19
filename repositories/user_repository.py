@@ -14,6 +14,26 @@ def save(user):
     user.id = id
     return user
 
+#a for loop to select all users by name and id and append them into an empty list
+def select_all():
+    users = []
+    sql = "SELECT * FROM users"
+    results = run_sql(sql)
+    for row in results:
+        user = User(row['name'], row['id'])
+        users.append(user)
+    return users
+
+# def select(id):
+#     user = None
+#     sql = "SELECT * FROM users WHERE id = %s"
+#     values = [id]
+#     result = run_sql(sql, values)[0]
+
+#     if result is not None:
+#         user = User(result['name'], result['category'], result['id'] )
+#     return user
+
 #delete all users
 def delete_all():
     sql = "DELETE FROM users"
