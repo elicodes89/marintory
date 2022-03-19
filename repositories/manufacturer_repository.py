@@ -23,6 +23,30 @@ def select_all():
         manufacturers.append(manufacturer)
     return manufacturers
 
+def select(name):
+    manufacturer = None
+
+    sql = "SELECT * FROM manufacturers WHERE name = %s"
+    values = [name]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        manufacturer = Manufacturer(result['name'])
+
+    return manufacturer
+
+def select(category):
+    manufacturer = None
+
+    sql = "SELECT * FROM manufacturers WHERE category = %s"
+    values = [category]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        manufacturer = Manufacturer(result['category'])
+
+    return manufacturer
+
 def delete_all():
     sql = "DELETE FROM manufacturers"
     run_sql(sql)

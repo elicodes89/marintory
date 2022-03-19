@@ -14,14 +14,14 @@ manufacturer_repository.delete_all()
 user_1 = User('Elisol', 'Shop Manager')
 user_repository.save(user_1)
 
-user_2 = User('Marcos' , 'Assistant')
+user_2 = User('Marcos', 'Assistant')
 user_repository.save(user_2)
 
-manufacturer1 = Manufacturer('Marine Accesories,LTD.', 'marcos@marineaccesories.com', '01312225555', 'Accesories')
+manufacturer1 = Manufacturer('Marina Accesories,LTD.', 'mariana@marineaccesories.com', '01312225555', 'Accesories')
 manufacturer_repository.save(manufacturer1)
 manufacturer2 = Manufacturer('Marine Fish&Coral,LTD.', 'carolina@marinefishcoral.com', '01312225556', 'Live Stock')
 manufacturer_repository.save(manufacturer2)
-manufacturer3 = Manufacturer('Food for your stock,LTD.', 'mariana@stockfood.com', '01312225557', 'Food')
+manufacturer3 = Manufacturer('Food for your stock,LTD.', 'marcos@stockfood.com', '01312225557', 'Food')
 manufacturer_repository.save(manufacturer3)
 
 # product1 = Product('Food for your stock,LTD.', 'mariana@stockfood.com', '01312225557', 'Food')
