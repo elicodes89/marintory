@@ -58,3 +58,9 @@ def update(product):
     sql = "UPDATE products SET (name, category, cost, selling_price) = (%s, %s, %s, %s) WHERE id = %s"
     values = [product.name, product.category, product.cost, product.selling_price, product.id]
     run_sql(sql, values)
+
+def count(category):
+    sql = "SELECT COUNT (*) FROM products WHERE category = %s "
+    values = [category]
+    result = run_sql(sql, values)[0]
+    return result

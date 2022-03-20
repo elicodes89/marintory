@@ -2,24 +2,31 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.user import User
 import repositories.user_repository as user_repository
+import repositories.manufacturer_repository as manufacturer_repository
+import repositories.product_repository as product_repository
+
 
 users_blueprint = Blueprint("users", __name__)
 
-@users_blueprint.route("/users")
-def users():
-    users = user_repository.select_all()
-    return render_template("users/index.html", users = users)
+@users_blueprint.route("/login")
+def prelogin():
+    # users = user_repository.select_all()
+    # return render_template("users/index.html", users = users)
+    return render_template("/users/index.html")
 
-@users_blueprint.route("/users/login", methods = ['POST'])
+@users_blueprint.route("/inventory", methods = ['POST'])
 def login():
     name = request.form['name']
     category = request.form['category']
     user = User(name, category)
-    # user1 = User(name, category)
-    # user2 = User(name, category)
-    saved_user = user_repository.save(user)
+    manufacturers = manufacturer_repository.select_all()
+    products = product_repository.select_all()
+    saved_user = user_repository.login(user)
+    food_stock = product_repository.count('Food')
+    live_stock = product_repository.count('Live Stock')
+    accesories_stock = product_repository.count('Accesories')
 
-    return render_template("/users/login.html", user=saved_user)
+    return render_template("/inventory/index.html", user=saved_user, manufacturers = manufacturers, products = products, food_stock = food_stock, live_stock = live_stock, accesories_stock = accesories_stock )
 
 @users_blueprint.route("/users/<id>")
 def show(id):

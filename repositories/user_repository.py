@@ -1,10 +1,10 @@
 from db.run_sql import run_sql
 from models.user import User
 
-import repositories.user_repository as user_repository
+# import repositories.user_repository as user_repository
 
 #create a user
-def save(user):
+def login(user):
     sql = "INSERT INTO users (name, category) VALUES (%s, %s) RETURNING *"
     values = [user.name, user.category]
     results = run_sql(sql, values)
