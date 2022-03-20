@@ -1,8 +1,8 @@
 from db.run_sql import run_sql
-from models.manufacturer import Manufacturer
+# from models.manufacturer import Manufacturer
 from models.product import Product
 
-import repositories.manufacturer_repository as manufacturer_repository
+# import repositories.manufacturer_repository as manufacturer_repository
 import repositories.product_repository as product_repository
 
 def save(product):
@@ -21,7 +21,7 @@ def select_all():
         products.append(product)
     return products
 
-def select(name):
+def select_by_name(name):
     product = None
 
     sql = "SELECT * FROM products WHERE name = %s"
@@ -29,11 +29,11 @@ def select(name):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        product = Product(result['name'])
+        product = Product(result['name'], result['category'], result['cost'], result['selling_price'], result['id'])
 
     return product
 
-def select(category):
+def select_by_category(category):
     product = None
 
     sql = "SELECT * FROM products WHERE category = %s"
@@ -41,7 +41,7 @@ def select(category):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        product = Product(result['category'])
+        product = Product(result['name'], result['category'], result['cost'], result['selling_price'], result['id'])
 
     return product
 

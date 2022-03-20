@@ -1,9 +1,7 @@
 from db.run_sql import run_sql
 from models.manufacturer import Manufacturer
-from models.product import Product
 
 import repositories.manufacturer_repository as manufacturer_repository
-import repositories.product_repository as product_repository
 
 
 def save(manufacturer):
@@ -22,7 +20,7 @@ def select_all():
         manufacturers.append(manufacturer)
     return manufacturers
 
-def select(name):
+def select_by_name(name):
     manufacturer = None
 
     sql = "SELECT * FROM manufacturers WHERE name = %s"
@@ -30,21 +28,20 @@ def select(name):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        manufacturer = Manufacturer(result['name'])
+        manufacturer = Manufacturer(result['name'], result['email'], result['contact_number'], result['category'], result['id'])
 
     return manufacturer
 
-def select(category):
+def select_by_category(category):
     manufacturer = None
 
-    sql = "SELECT * FROM manufacturers WHERE category = %s"
+    sql = "SELECT * FROM manufacturers"
     values = [category]
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        manufacturer = Manufacturer(result['category'])
-
-    return manufacturer
+        manufacturer = Manufacturer(result['name'], result['email'], result['contact_number'], result['category'], result['id'])
+        return manufacturer
 
 def delete_all():
     sql = "DELETE FROM manufacturers"
