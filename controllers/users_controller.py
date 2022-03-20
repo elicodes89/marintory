@@ -22,9 +22,9 @@ def login():
     manufacturers = manufacturer_repository.select_all()
     products = product_repository.select_all()
     saved_user = user_repository.login(user)
-    food_stock = product_repository.count('Food')
-    live_stock = product_repository.count('Live Stock')
-    accesories_stock = product_repository.count('Accesories')
+    food_stock = product_repository.count('Food')[0] #i am using brackets as the sql count is returning an array and I do not want to see the brackets
+    live_stock = product_repository.count('Live Stock')[0]
+    accesories_stock = product_repository.count('Accesories')[0]
 
     return render_template("/inventory/index.html", user=saved_user, manufacturers = manufacturers, products = products, food_stock = food_stock, live_stock = live_stock, accesories_stock = accesories_stock )
 
