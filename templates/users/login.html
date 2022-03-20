@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<table>
+<tr>
+    <th>ID:</th>
+    <th></th>
+    <th>Name:</th>
+    <th></th>
+    <th>Category:</th>
+</tr>
+<tr>
+    <td><a href="/login/{{ user.id }}"> {{user.id}}</a></td>
+    <td>|</td>
+    <td>{{user.name}}</td>
+    <td>|</td>
+    <td>{{user.category}}</td>
+</tr>
+</table>
+<h3>hello from login{{user.name}}</h3>
+
+{% endblock %}
