@@ -35,7 +35,7 @@ def select_by_name(name):
 def select_by_category(category):
     manufacturer = None
 
-    sql = "SELECT * FROM manufacturers"
+    sql = "SELECT * FROM manufacturers WHERE category = %s"
     values = [category]
     result = run_sql(sql, values)[0]
 
