@@ -12,25 +12,30 @@
 </head>
 <body>
 <main class="flex flex--row">
-  <p>hello from base template</p>
-  <!-- <nav>
+  <!-- <p>hello from base template</p> -->
+  <nav>
     <ul>
       <li>
-        <a href="/products">Products</a>
+        <a href="/login">Login</a>
       </li>
       <li>
         <a href="/manufacturers">Manufacturers</a>
       </li>
       <li>
-        <a href="/users">Users</a>
+        <a href="/products">Products</a>
       </li>
     </ul>
-  </nav> -->
+  </nav>
   <section id="content">
+ 
       {% block content %}
 
       {% endblock%}
   </section>
   </main>
+  <footer class="text-center text-muted mt-2">
+    This project was coded by EliCodes and it is <a href="https://github.com/elicodes89/piedrapapeltijera_hwork" target="_blank"
+    rel="noopener noreferrer">open sourced</a>
+</footer> 
 </body>
 </html>

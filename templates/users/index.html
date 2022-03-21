@@ -1,39 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+<div class = login-form>
 <h1>Select your user to Login</h1>
 
 <form action="/inventory" method="post">
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
-  <label for="category">Category:</label>
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" id="name"><br><br>
+  <label for="category">Category:</label><br>
   <select name="category" id="category">
     <option value="shopmanager">Shop Manager</option>
     <option value="shopassistant">Assistant</option>
-  </select>
+  </select><br><br>
 
   <input type="submit" value="Login">
+  <br><br>
 </form>
-
-<!-- <table>
-    <tr>
-      <th>ID:</th>
-      <th></th>
-        <th>Name:</th>
-        <th></th>
-        <th>Category:</th>
-      </tr>
-  {% for user in users %}
-
-  <tr>
-    <td><a href="/users/{{ user.id }}"> {{user.id}}</a></td>
-    <td>|</td>
-    <td>{{ user.name }}</td>
-    <td>|</td>
-    <td>{{ user.category }}</td>
-  </tr>
-  {% endfor %}
-</table> -->
-
+</div>
 
 {% endblock %}

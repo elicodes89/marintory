@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Merriweather|Special+Elite" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
 <h1>Products</h1>
 
-<div class="product_form"></div>
+<div class="product_form">
 <h1>Add a new Product:</h1>
 
 <form action="/products" method="post">
@@ -11,9 +19,9 @@
   <input type="text" id="name" name="name" autofocus><br><br>
   <label for="category">Category:</label><br>
   <select name="category" id = "category"><br>
-  <option value="livestock">Live Stock</option>
-  <option value="accesories">Accesories</option>
-  <option value="food">Food</option>
+  <option value="Live Stock">Live Stock</option>
+  <option value="Accesories">Accesories</option>
+  <option value="Food">Food</option>
   </select><br><br>
   <label for="cost">Cost:</label><br>
   <input type="number" id="cost" name="cost" autofocus><br><br>
@@ -24,7 +32,7 @@
   <select name="manufacturer" id = "manufacturer"><br>
   <option value="Red Sea">Red Sea</option> 
   <option value="Fluval">Fluval</option>
-  <option value="ReefLab">Reef Lab</option>
+  <option value="Reef Lab">Reef Lab</option>
   </select><br><br>
   <input type="submit" value="Add Product">
 </form>
