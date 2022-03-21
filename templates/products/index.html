@@ -19,9 +19,10 @@
   <input type="number" id="cost" name="cost" autofocus><br><br>
   <label for="selling_price">Selling Price:</label><br>
   <input type="number" id="selling_price" name="selling_price" autofocus><br><br>
+
   <label for="manufacturer">Manufacturer:</label><br>
   <select name="manufacturer" id = "manufacturer"><br>
-  <option value="Red Sea">Red Sea</option>
+  <option value="Red Sea">Red Sea</option> 
   <option value="Fluval">Fluval</option>
   <option value="ReefLab">Reef Lab</option>
   </select><br><br>
@@ -44,7 +45,7 @@
   </tr>
   {% for product in products %}
   <tr>
-    <td><a href="/products/{{ product.id }}"> {{product.id}} </a></td>
+    <td> {{product.id}} </td>
     <td>|</td>
     <td>{{ product.name}}</td>
     <td>|</td>

@@ -32,6 +32,18 @@ def select_by_name(name):
 
     return manufacturer
 
+def select_by_id(id):
+    manufacturer = None
+
+    sql = "SELECT * FROM manufacturers WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        manufacturer = Manufacturer(result['name'], result['email'], result['contact_number'], result['category'], result['id'])
+
+    return manufacturer
+
 def select_by_category(category):
     manufacturer = None
 

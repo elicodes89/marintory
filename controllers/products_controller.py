@@ -27,9 +27,9 @@ def add_new_product():
     category = request.form['category']
     cost = request.form['cost']
     selling_price = request.form['selling_price']
-    product = Product(name, category, 0, 2)
-    saved_product = product_repository.save(product)
-    products = product_repository.select_all()
+    product = Product(name, category, cost, selling_price)
+    product_repository.save(product)
+    product_repository.select_all()
 
     return redirect ("/products")
 
