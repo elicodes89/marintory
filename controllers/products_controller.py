@@ -20,3 +20,20 @@ def show_by_name(name):
 def show_by_category(category):
     product = product_repository.select_by_category(category)
     return render_template("products/show_category.html", product = product)
+
+@products_blueprint.route("/products", methods = ['POST'])
+def add_new_product():
+    name = request.form['name']
+    category = request.form['category']
+    cost = request.form['cost']
+    selling_price = request.form['selling_price']
+    product = Product(name, category, 0, 2)
+    saved_product = product_repository.save(product)
+    products = product_repository.select_all()
+
+    return redirect ("/products")
+
+@products_blueprint.route("/products/<id>/delete", methods=['POST'])
+def delete_product(id):
+    product_repository.delete(id)
+    return redirect('/products')
