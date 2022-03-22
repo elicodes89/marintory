@@ -5,22 +5,7 @@ from models.product import Product
 # import repositories.manufacturer_repository as manufacturer_repository
 import repositories.product_repository as product_repository
 
-def save(product):
-    #pseudo code:
-    #check if there is a product category as same as the product
-    #if not, run intert into and set stock_quantity to 1. for this category (stock_quantity) with a COUNT function
-    #if yes, with the same count function, stock quantity + 1 , 
-    # category = product.category #category from new product that i am adding
-    # current_count = count(category)
-    # new_stock = current_count
-    
-    # results = select_by_category(category)
-    # if results.length >= 1:
-    #     for row in results:
-    #         sql = "UPDATE products SET (stock_quantity) = (%s) WHERE id = %s"
-    #         values = [new_stock, row['id']]
-    #         run_sql(sql, values)
-    
+def save(product):    
     sql = "INSERT INTO products ( name, category, cost, selling_price, stock_quantity) VALUES ( %s, %s, %s, %s, %s ) RETURNING id"
     values = [product.name, product.category, product.cost, product.selling_price, product.stock_quantity]
     results = run_sql( sql, values )
@@ -78,8 +63,8 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def update_stock_quantity(product_id, new_stock):
-    sql = "UPDATE products SET (stock_quantity) = (%s) WHERE id = %s"
+def update_stock_quantity(new_stock, product_id):
+    sql = "UPDATE products SET stock_quantity = %s WHERE id = %s"
     values = [new_stock, product_id]
     run_sql(sql, values)
 

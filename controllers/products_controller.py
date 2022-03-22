@@ -30,21 +30,27 @@ def add_new_product():
     cost = request.form['cost']
     selling_price = request.form['selling_price']
 
+    #gets the current count based on category of the new product to add
     current_count = product_repository.count(category)[0]
+
+    #sets new_stock to latest value
     new_stock = current_count + 1
     
+    #gets all records from product table based on category 
     results = product_repository.select_by_category(category)
-    # if results.length >= 1:
-    for row in results:
-        product_id = row['id']
-        product_repository.update_stock_quantity(product_id, new_stock)
 
-    product = Product(name, category, cost, selling_price, new_stock)
-    # stock = redirect_to_inventory()
-    product_repository.save(product)
-    # product_repository.select_all()
+    #if there is at least one existing product based on category, 
+    # update the stock_quantity of each record
+    if len(results) >= 1:
+        for row in results:
+            product_id = row['id']
+            product_repository.update_stock_quantity(new_stock, product_id)
 
-    return redirect ("/products")
+    #Add new product with the new_stock
+    product = Product(name, category, cost, selling_price, new_stock)    
+    product_repository.save(product)    
+
+    return redirect ("/products")    
 
 @products_blueprint.route("/products/<id>/delete", methods=['POST'])
 def delete_product(id):
