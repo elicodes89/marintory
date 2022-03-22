@@ -25,10 +25,24 @@ def login():
     food_stock = product_repository.count('Food')[0] #i am using brackets as the sql count is returning an array and I do not want to see the brackets
     live_stock = product_repository.count('Live Stock')[0]
     accesories_stock = product_repository.count('Accesories')[0]
+    food_stock_level = display_conditional_coloring(food_stock)
+    live_stock_level = display_conditional_coloring(live_stock)
+    accesories_stock_level = display_conditional_coloring(accesories_stock)
 
-    return render_template("/inventory/index.html", user=saved_user, manufacturers = manufacturers, products = products, food_stock = food_stock, live_stock = live_stock, accesories_stock = accesories_stock )
+    return render_template("/inventory/index.html", user=saved_user, manufacturers = manufacturers, products = products, 
+    food_stock = food_stock, live_stock = live_stock, accesories_stock = accesories_stock, 
+    food_stock_level = food_stock_level, live_stock_level = live_stock_level, accesories_stock_level = accesories_stock_level )
 
 @users_blueprint.route("/users/<id>")
 def show(id):
     user = user_repository.select(id)
     return render_template("users/index.html", user=user )
+
+def display_conditional_coloring(stock): #this is a local function
+    if stock == 0:
+        return "out_stock" #now we put this on html
+    elif stock >= 1 and stock <= 5:
+        return "low_stock"
+    else:
+        return "high_stock"
+

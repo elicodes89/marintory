@@ -27,9 +27,9 @@
   </nav>
   <section class="content">
       {% block content %}
-      <p> Live Stock: {{live_stock }}</p>
-      <p> Food Stock: {{food_stock }}</p>
-      <p> Accesories Stock: {{accesories_stock }}</p>
+      <p class = {{live_stock_level}}> Live Stock: {{live_stock }}</p>
+      <p class = {{food_stock_level}}> Food Stock: {{food_stock }}</p>
+      <p class = {{accesories_stock_level}}> Accesories Stock: {{accesories_stock }}</p>
 
       {% for product in products %}
 

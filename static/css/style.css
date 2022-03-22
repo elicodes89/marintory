@@ -12,3 +12,16 @@ body {
     border: 1px solid black;
     margin: 40px 400px;
 }
+
+p.out_stock {
+    color: red;
+}
+
+p.low_stock {
+    color : orange;
+
+}
+
+p.high_stock {
+    color: green;
+}
