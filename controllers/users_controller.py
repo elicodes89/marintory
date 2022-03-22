@@ -11,8 +11,7 @@ users_blueprint = Blueprint("inventory", __name__)
 
 @users_blueprint.route("/login")
 def prelogin():
-    # users = user_repository.select_all()
-    # return render_template("users/index.html", users = users)
+    
     return render_template("/users/index.html")
 
 @users_blueprint.route("/inventory")

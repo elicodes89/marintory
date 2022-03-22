@@ -18,11 +18,12 @@ CREATE TABLE manufacturers (
 
 CREATE TABLE products (
   id SERIAL PRIMARY KEY,
-  manufacturer_id INT REFERENCES manufacturers(id) ON DELETE CASCADE,
+  -- manufacturer_id INT REFERENCES manufacturers(id) ON DELETE CASCADE,
   name VARCHAR(255),
   category VARCHAR(255),
   cost INT,
-  selling_price INT
+  selling_price INT,
+  stock_quantity INT
 );
 
 -- INSERT INTO users (name, category) VALUES ('Papi' , 'Shop Manager');
