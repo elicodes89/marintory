@@ -23,6 +23,19 @@ def select_all():
         products.append(product)
     return products
 
+def select_by_id(id):
+    product = None
+
+    sql = "SELECT * FROM products WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        product = Product(result['name'], result['category'], result['cost'], result['selling_price'], result['stock_quantity'], result['id'])
+    return product
+
+
+
 def select_by_name(name):
     product = None
 
@@ -58,7 +71,7 @@ def delete(name):
     values = [name]
     run_sql(sql, values)
 
-def delete(id):
+def delete_by_id(id):
     sql = "DELETE FROM products WHERE id = %s"
     values = [id]
     run_sql(sql, values)
