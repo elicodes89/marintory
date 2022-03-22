@@ -15,7 +15,21 @@ def prelogin():
     # return render_template("users/index.html", users = users)
     return render_template("/users/index.html")
 
-@users_blueprint.route("/inventory", methods = ['POST'])
+@users_blueprint.route("/inventory")
+def redirect_to_inventory():
+
+    food_stock = product_repository.count('Food')[0] #i am using brackets as the sql count is returning an array and I do not want to see the brackets
+    live_stock = product_repository.count('Live Stock')[0]
+    accesories_stock = product_repository.count('Accesories')[0]
+    food_stock_level = display_conditional_coloring(food_stock)
+    live_stock_level = display_conditional_coloring(live_stock)
+    accesories_stock_level = display_conditional_coloring(accesories_stock)
+
+    return render_template("/inventory/index.html", 
+    food_stock = food_stock, live_stock = live_stock, accesories_stock = accesories_stock, 
+    food_stock_level = food_stock_level, live_stock_level = live_stock_level, accesories_stock_level = accesories_stock_level)
+
+@users_blueprint.route("/inventory", methods = ['POST']) #login button also has a post method this is what you see after login
 def login():
     name = request.form['name']
     category = request.form['category']
