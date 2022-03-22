@@ -7,6 +7,7 @@ import repositories.product_repository as product_repository
 
 
 users_blueprint = Blueprint("users", __name__)
+users_blueprint = Blueprint("inventory", __name__)
 
 @users_blueprint.route("/login")
 def prelogin():
