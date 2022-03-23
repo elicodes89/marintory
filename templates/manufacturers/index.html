@@ -66,6 +66,10 @@
       <input class="btn btn--danger" type="submit" value="delete" />
     </form>
 
+    <form action="/manufacturers/{{manufacturer.id}}/update" method="PUT">
+      <input class="btn" type="submit" value="update" />
+    </form>
+
     </td>
   </tr>
   {% endfor %}

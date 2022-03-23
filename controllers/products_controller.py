@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.product import Product
 
 import repositories.product_repository as product_repository
+import repositories.manufacturer_repository as manufacturer_repository
 
 products_blueprint = Blueprint("products", __name__)
 users_blueprint = Blueprint("users", __name__)
@@ -12,6 +13,11 @@ users_blueprint = Blueprint("users", __name__)
 def products():
     products = product_repository.select_all()
     return render_template("products/index.html", products = products)
+
+@products_blueprint.route("/products/<id>/update", methods = ['GET'])
+def load_update_form(id):
+    products = product_repository.select_all()
+    return render_template("products/update.html", products = products, id = id)
 
 @products_blueprint.route("/products/productname/<name>")
 def show_by_name(name):
@@ -47,7 +53,7 @@ def add_new_product():
             product_repository.update_stock_quantity(new_stock, product_id)
 
     #Add new product with the new_stock
-    product = Product(name, category, cost, selling_price, new_stock)    
+    product = Product(name, category, cost, selling_price, new_stock) #product instance    
     product_repository.save(product)    
 
     return redirect ("/products")    
@@ -58,7 +64,7 @@ def delete_product(id):
     category = product_to_delete.category
     current_count = product_repository.count(category)[0]
     new_stock = current_count - 1
-    
+
     results = product_repository.select_by_category(category)
     if len(results) >= 1:
         for row in results:
@@ -67,3 +73,24 @@ def delete_product(id):
     
     product_repository.delete_by_id(id)
     return redirect('/products')
+
+# @products_blueprint.route("/products/<id>/update" , methods=['GET'])
+# def update_product(id):
+#     product = product_repository.update(id)
+#     manufacturer = manufacturer_repository.select_all()
+#     return render_template ("products/index.html" , product = product, manufacturer = manufacturer)
+
+@products_blueprint.route("/products/<id>/update" , methods=['POST'])
+def update_product(id):
+    name = request.form['name']
+    category = request.form['category']
+    cost = request.form['cost']
+    selling_price = request.form['selling_price']
+    stock_quantity = product_repository.count(category)[0] #0 to not get an array, just the actual value. remember this
+    product = Product(name, category, cost, selling_price, stock_quantity, id) #product instance    
+    
+    product_repository.update(product)
+
+    return redirect ("/products")
+  
+

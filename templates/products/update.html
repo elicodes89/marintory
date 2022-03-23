@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
-<h1>Products</h1>
+<h1>Edit Products</h1>
 
 <div class="product_form">
-<h1>Add a new Product:</h1>
-<form action="/products" method="post">
+<h1>Edit a Product:</h1>
+<form action="/products/{{id}}/update" method="POST">
   <label for="name">Product Name:</label><br>
   <input type="text" id="name" name="name" autofocus><br><br>
 
@@ -38,11 +38,12 @@
   <option value="Reef Lab">Reef Lab</option>
   </select><br><br>
 
-  <input type="submit" value="Add Product">
+  <input type="submit" value="Update Product">
 </form>
 </div>
 
 <div class = "table_form">
+
 <table>
   <tr>
     <th>ID</th>
@@ -73,18 +74,13 @@
     <td>{{ product.stock_quantity }}</td>
     <td></td>
 
-    <form action="/products/{{product.id}}/delete" method="POST">
-      <input class="btn" type="submit" value="delete" />
-    </form>
-
-    <form action="/products/{{product.id}}/update" method="GET">
+    <!-- <form action="/products/{{product.id}}/update" method="PUT">
       <input class="btn" type="submit" value="update" />
-    </form>
+    </form> -->
 
     </td>
   </tr>
   {% endfor %}
 </table>
-<!-- <p>id: {{product_to_delete}} </p> -->
 </div>
 {% endblock %}
