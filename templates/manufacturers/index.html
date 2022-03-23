@@ -8,8 +8,35 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-<h1>List of Manufacturers:</h1>
 
+<h1>Manufacturers:</h1>
+
+<div class="manufacturer_form">
+  <h1>Add a new Manufacturer:</h1>
+  
+  <form action="/manufacturers" method="post">
+    <label for="name">Manufacturer Name:</label><br>
+    <input type="text" id="name" name="name" autofocus><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" autofocus><br><br>
+
+    <label for="contact_number">Contact Number:</label><br>
+    <input type="text" id="contact_number" name="contact_number" autofocus><br><br>
+
+    <label for="category">Category:</label><br>
+    <select name="category" id = "category"><br>
+    <option value="Live Stock">Live Stock</option>
+    <option value="Accesories">Accesories</option>
+    <option value="Food">Food</option>
+    </select><br><br>
+
+    <input type="submit" value="Add Manufacturer">
+
+</form>
+</div>
+
+<div class = "table_form">
 <table>
   <tr>
     <th>ID:</th>
@@ -24,7 +51,7 @@
   </tr>
   {% for manufacturer in manufacturers %}
   <tr>
-    <td><a href="/manufacturers/{{ manufacturer.id }}"> {{manufacturer.id}} </a></td>
+    <td>{{ manufacturer.id }}</td>
     <td>|</td>
     <td>{{ manufacturer.name}}</td>
     <td>|</td>
@@ -35,7 +62,13 @@
     <td>{{ manufacturer.category }}</td>
     <td>|</td>
 
+    <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
+      <input class="btn btn--danger" type="submit" value="delete" />
+    </form>
+
+    </td>
   </tr>
   {% endfor %}
 </table>
+</div>
 {% endblock %}

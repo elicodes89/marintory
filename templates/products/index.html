@@ -31,8 +31,6 @@
   <label for="selling_price">Selling Price:</label><br>
   <input type="number" id="selling_price" name="selling_price" autofocus><br><br>
 
-  <!-- <label for="stock">Left in Stock:</label><br>
-  <input type="number" id="stock" name="quantity" autofocus><br><br> -->
 
   <label for="manufacturer">Manufacturer:</label><br>
   <select name="manufacturer" id = "manufacturer"><br>
@@ -74,7 +72,7 @@
     <td>{{ product.selling_price }}</td>
     <td></td>
     <td>{{ product.stock_quantity }}</td>
-    <!-- <td></td> -->
+    <td></td>
 
     <form action="/products/{{product.id}}/delete" method="POST">
       <input class="btn btn--danger" type="submit" value="delete" />

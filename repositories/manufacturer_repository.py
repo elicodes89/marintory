@@ -59,14 +59,20 @@ def delete_all():
     sql = "DELETE FROM manufacturers"
     run_sql(sql)
 
-def delete(id):
+def delete_by_id(id):
     sql = "DELETE FROM manufacturers WHERE id = %s"
     values = [id]
+    run_sql(sql, values)
+
+def delete(name):
+    sql = "DELETE FROM manufacturers WHERE name = %s"
+    values = [name]
     run_sql(sql, values)
 
 def update(manufacturer):
     sql = "UPDATE manufacturers SET (name, email, contact_number, category) = (%s, %s, %s, %s) WHERE id = %s"
     values = [manufacturer.name, manufacturer.email, manufacturer.contact_number, manufacturer.category, manufacturer.id]
     run_sql(sql, values)
+
 
 
