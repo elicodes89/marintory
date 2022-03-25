@@ -12,6 +12,28 @@
     background-position: center;
     border-radius: 15px;
     border: 1px solid black;
-    margin: 40px 400px;
+    margin: 20px 400px;
+    padding: 60px;
 
+}
+
+.manufacturer_form {
+    text-align: center;
+    background: url('/static/images/logo.png');
+    background-position: center;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin: 20px 400px;
+    padding: 80px;
+
+}
+
+label {
+    background-color: blueviolet;
+    color:white;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }

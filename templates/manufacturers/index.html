@@ -37,7 +37,7 @@
 </div>
 
 <div class = "table_form">
-<table>
+<table class = "center">
   <tr>
     <th>ID:</th>
     <th></th>
@@ -60,7 +60,8 @@
     <td>{{ manufacturer.contact_number }}</td>
     <td>|</td>
     <td>{{ manufacturer.category }}</td>
-    <td>|</td>
+    <td>|
+
 
     <form action="/manufacturers/{{manufacturer.id}}/delete" method="POST">
       <input class="btn btn--danger" type="submit" value="delete" />
@@ -70,9 +71,10 @@
       <input class="btn" type="submit" value="update" />
     </form>
 
-    </td>
-  </tr>
-  {% endfor %}
+  </td>
+  
+</tr>
+{% endfor %}
 </table>
 </div>
 {% endblock %}

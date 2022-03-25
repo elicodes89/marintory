@@ -74,12 +74,6 @@ def delete_product(id):
     product_repository.delete_by_id(id)
     return redirect('/products')
 
-# @products_blueprint.route("/products/<id>/update" , methods=['GET'])
-# def update_product(id):
-#     product = product_repository.update(id)
-#     manufacturer = manufacturer_repository.select_all()
-#     return render_template ("products/index.html" , product = product, manufacturer = manufacturer)
-
 @products_blueprint.route("/products/<id>/update" , methods=['POST'])
 def update_product(id):
     name = request.form['name']

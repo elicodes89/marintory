@@ -44,7 +44,7 @@
 
 <div class = "table_form">
 
-<table>
+<table class = "center">
   <tr>
     <th>ID</th>
     <th></th>
@@ -74,13 +74,9 @@
     <td>{{ product.stock_quantity }}</td>
     <td></td>
 
-    <!-- <form action="/products/{{product.id}}/update" method="PUT">
-      <input class="btn" type="submit" value="update" />
-    </form> -->
-
-    </td>
-  </tr>
-  {% endfor %}
+</td>
+</tr>
+{% endfor %}
 </table>
 </div>
 {% endblock %}

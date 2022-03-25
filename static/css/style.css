@@ -10,7 +10,13 @@ body {
     background-color: #B0FDA3;
     border-radius: 15px;
     border: 1px solid black;
-    margin: 40px 400px;
+    margin: 40px 200px;
+    font-size:50px;
+}
+
+.stock_center {
+    text-align: center;
+    font-size: 30px;
 }
 
 p.out_stock {

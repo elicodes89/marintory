@@ -43,7 +43,7 @@
 </div>
 
 <div class = "table_form">
-<table>
+<table class = "center">
   <tr>
     <th>ID</th>
     <th></th>
@@ -69,9 +69,10 @@
     <td>{{ product.cost }}</td>
     <td>|</td>
     <td>{{ product.selling_price }}</td>
-    <td></td>
+    <td>|</td>
     <td>{{ product.stock_quantity }}</td>
-    <td></td>
+    <td>|
+
 
     <form action="/products/{{product.id}}/delete" method="POST">
       <input class="btn" type="submit" value="delete" />
@@ -81,10 +82,9 @@
       <input class="btn" type="submit" value="update" />
     </form>
 
-    </td>
-  </tr>
-  {% endfor %}
+</td>
+</tr>
+{% endfor %}
 </table>
-<!-- <p>id: {{product_to_delete}} </p> -->
 </div>
 {% endblock %}
