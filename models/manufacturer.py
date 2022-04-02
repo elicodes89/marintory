@@ -6,3 +6,7 @@ class Manufacturer:
         self.contact_number = contact_number
         self.category = category
         self.id = id
+
+
+
+        

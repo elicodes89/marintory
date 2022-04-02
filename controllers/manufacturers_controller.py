@@ -36,16 +36,6 @@ def add_new_manufacturer():
 @manufacturers_blueprint.route("/manufacturers/<id>/delete", methods=['POST'])
 def delete_manufacturer(id):
     manufacturer_repository.delete_by_id(id)
-    # category = product_to_delete.category
-    # current_count = product_repository.count(category)[0]
-    # new_stock = current_count - 1
-    
-    # results = product_repository.select_by_category(category)
-    # if len(results) >= 1:
-    #     for row in results:
-    #         product_id = row['id']
-    #         product_repository.update_stock_quantity(new_stock, product_id)
-    # return render_template("manufacturers/index.html", id = id)
 
     return redirect('/manufacturers')
 
